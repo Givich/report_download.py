@@ -17,7 +17,7 @@ headers = {
 
 }
 
-default_cookies = '80dcp179hn083msvajnvh80ga1'
+default_cookies = '350ilvv0sbjfmmq59fmeo54s43'
 
 
 def _parse_args():
@@ -122,7 +122,7 @@ def process_reports(sess, task, output_dir, dry_run):
             path = os.path.join(path_temp, 'Отчет КП или КР')
             os.makedirs(path, exist_ok=True)
         else:
-            path = path = os.path.join(path_temp, task['name'])
+            path = os.path.join(path_temp, re.sub('[^\w\-_\. ]', '_', task['name'])[:60])
             os.makedirs(path, exist_ok=True)
 
         # os.makedirs(path, exist_ok=True)
