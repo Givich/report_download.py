@@ -4,6 +4,7 @@ import requests
 import getpass
 import os
 import re
+import textwrap
 
 import json
 
@@ -122,7 +123,8 @@ def process_reports(sess, task, output_dir, dry_run):
             path = os.path.join(path_temp, 'Отчет КП или КР')
             os.makedirs(path, exist_ok=True)
         else:
-            path = os.path.join(path_temp, re.sub('[^\w\-_\. ]', '_', task['name'])[:60])
+            # path = os.path.join(path_temp, re.sub('[^\w\-_\. ]', '_', task['name'])[:60])
+            path = os.path.join(path_temp, textwrap.shorten(re.sub('[^\w\-_\. ]','', task['name']), width=40, placeholder="__"))
             os.makedirs(path, exist_ok=True)
 
         # os.makedirs(path, exist_ok=True)
